@@ -38,7 +38,7 @@ def get_session_cookies(auth_url, username, password):
 
 cookies = get_session_cookies(url, username, password)
 
-#print(cookies)
+#print(cookies), cookies function is not used yet, just for reference
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 request_url = f'{baseUrl}/vmm/v4.0/ahv/config/vms'
