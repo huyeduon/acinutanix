@@ -1,8 +1,8 @@
-# Install environment
+# Install Python environment
 
 pip install -r requirements.txt
 
-# Prepare virtual environment file
+# Prepare .env file
 
 Setup .env file with below format
 
