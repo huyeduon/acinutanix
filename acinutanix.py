@@ -4,7 +4,6 @@ import requests
 from requests.auth import HTTPBasicAuth
 import urllib3
 import os
-import pprint
 
 from base64 import b64encode
 
