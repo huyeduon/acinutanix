@@ -6,10 +6,7 @@ pip install -r requirements.txt
 
 Setup .env file with below format
 
-### baseUrl=https://your_prism_central_ip_address:9440/api
-
-### username=your_prism_central_username
-
-### password=your_prism_central_password
-
-### pc=your_prism_central_ip_address
+- baseUrl=https://your_prism_central_ip_address:9440/api
+- username=your_prism_central_username
+- password=your_prism_central_password
+- pc=your_prism_central_ip_address
