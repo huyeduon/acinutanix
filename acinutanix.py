@@ -1,3 +1,4 @@
+#List VM in Nutanix cluster using v4 Rest API with Python
 from dotenv import load_dotenv
 import requests
 from requests.auth import HTTPBasicAuth
@@ -61,8 +62,6 @@ if response.status_code == 200:
     data = response.json()['data']
 else:
     print("Failed to retrieve data:", response.status_code)
-
-
 
 # Print the header with fixed width
 header_vm_name = "VM Name".ljust(20)
