@@ -13,14 +13,15 @@ load_dotenv()
 baseUrl = os.getenv('baseUrl')
 username = os.getenv('username')
 password = os.getenv('password')
-print(baseUrl)
 
-url = baseUrl + '/vmm/v4.0/ahv/config/vms'
+apiVersion = os.getenv('apiVersion')
 
+
+url = baseUrl + f'/vmm/{apiVersion}/ahv/config/vms'
+print(f'/vmm/{apiVersion}/ahv/config/vms')
 def get_session_cookies(auth_url, username, password):
     """
     Authenticate with the server and return session cookies.
-    
     :param auth_url: The URL to send the authentication request to.
     :param username: The username for authentication.
     :param password: The password for authentication.
@@ -41,7 +42,7 @@ cookies = get_session_cookies(url, username, password)
 #print(cookies), cookies function is not used yet, just for reference
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-request_url = f'{baseUrl}/vmm/v4.0/ahv/config/vms'
+request_url = f'{baseUrl}/vmm/{apiVersion}/ahv/config/vms'
 encoded_credentials = b64encode(bytes(f'{username}:{password}',
 encoding='ascii')).decode('ascii')
 
