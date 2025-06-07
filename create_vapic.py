@@ -8,7 +8,7 @@ import argparse
 from base64 import b64encode
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-load_dotenv(override=True)  # Force load .env from the v3 folder
+load_dotenv(override=True)
 
 baseUrl = os.getenv("baseUrl")
 cluster_password = os.getenv("password")
@@ -28,53 +28,99 @@ headers = {
 
 # Retrieve uuid of virtual apic ova
 def get_ova_uuid(ova_file_name, baseUrl):
-    payload = {
+    try:
+        payload = {
         "kind": "ova"
-    }
-    json_payload = json.dumps(payload)
-    url = baseUrl + 'ovas/list'
-    response = requests.request("POST", url, data=json_payload, headers=headers,
+        }
+        json_payload = json.dumps(payload)
+        url = baseUrl + 'ovas/list'
+        response = requests.request("POST", url, data=json_payload, headers=headers,
                                 verify=False,
                                 timeout=1)
 
-    if response.ok:
-        response_dict = json.loads(response.text)
-    entities = response_dict.get("entities", [])
+        if response.ok:
+            response_dict = json.loads(response.text)
+            entities = response_dict.get("entities", [])
 
-    for entity in entities:
-        if ova_file_name.strip() in entity.get("info", {}).get("name", ""):
-            return entity["metadata"]["uuid"]
-
+        for entity in entities:
+            if ova_file_name.strip() in entity.get("info", {}).get("name", ""):
+                return entity["metadata"]["uuid"]
+            
+    except requests.exceptions.Timeout:
+        print("Error: The request timed out. Please check your network or increase the timeout value.")
+        return None
+    except requests.exceptions.RequestException as e:
+        print(f"Error: An HTTP error occurred: {e}")
+        return None
+    except KeyError as e:
+        print(f"Error: Missing key in the response: {e}")
+        return None
+    except ValueError as e:
+        print(f"Error: {e}")
+        return None
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        return None
 
 def get_cluster_uuid(cluster_name, baseUrl):
-    cluster_url = baseUrl + "clusters/list"
-    payload = {"kind": "cluster"}
-    json_payload = json.dumps(payload)
-    response = requests.request("POST", cluster_url, data=json_payload, headers=headers,
+    try: 
+        cluster_url = baseUrl + "clusters/list"
+        payload = {"kind": "cluster"}
+        json_payload = json.dumps(payload)
+        response = requests.request("POST", cluster_url, data=json_payload, headers=headers,
                                 verify=False,
                                 timeout=10)
 
-    response_dict = json.loads(response.text)
-    entities = response_dict.get("entities", [])
-    for entity in entities:
-        if cluster_name.strip() in entity.get("status", {}).get("name", ""):
-            return entity["metadata"]["uuid"]
-
+        response_dict = json.loads(response.text)
+        entities = response_dict.get("entities", [])
+        for entity in entities:
+            if cluster_name.strip() in entity.get("status", {}).get("name", ""):
+                return entity["metadata"]["uuid"]
+    except requests.exceptions.Timeout:
+        print("Error: The request timed out. Please check your network or increase the timeout value.")
+        return None
+    except requests.exceptions.RequestException as e:
+        print(f"Error: An HTTP error occurred: {e}")
+        return None
+    except KeyError as e:
+        print(f"Error: Missing key in the response: {e}")
+        return None
+    except ValueError as e:
+        print(f"Error: {e}")
+        return None
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        return None
 
 def get_subnet_uuid(subnet, baseUrl):
-    url = baseUrl + "subnets/list"
-    payload = {"kind": "subnet"}
-    json_payload = json.dumps(payload)
-    response = requests.request("POST", url, data=json_payload, headers=headers,
+    try:
+        url = baseUrl + "subnets/list"
+        payload = {"kind": "subnet"}
+        json_payload = json.dumps(payload)
+        response = requests.request("POST", url, data=json_payload, headers=headers,
                                 verify=False,
                                 timeout=10)
 
-    response_dict = json.loads(response.text)
-    entities = response_dict.get("entities", [])
-    for entity in entities:
-        if subnet.strip() in entity.get("status", {}).get("name", ""):
-            return entity["metadata"]["uuid"]
-
+        response_dict = json.loads(response.text)
+        entities = response_dict.get("entities", [])
+        for entity in entities:
+            if subnet.strip() in entity.get("status", {}).get("name", ""):
+                return entity["metadata"]["uuid"]
+    except requests.exceptions.Timeout:
+        print("Error: The request timed out. Please check your network or increase the timeout value.")
+        return None
+    except requests.exceptions.RequestException as e:
+        print(f"Error: An HTTP error occurred: {e}")
+        return None
+    except KeyError as e:
+        print(f"Error: Missing key in the response: {e}")
+        return None
+    except ValueError as e:
+        print(f"Error: {e}")
+        return None
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        return None
 
 def create_vm_spec(ova_file_name, vm_name, vm_size, oob_subnet, infra_subnet, baseUrl):
     try:
