@@ -1,3 +1,11 @@
+"""
+Script Name: create_vapic.py
+Description: This script is used to create virtual APICs on Nutanix clusters.
+Author: Huyen Duong
+Quality: POC
+Date: July 2025
+Version: 1.0
+"""
 from dotenv import load_dotenv
 import os
 import requests
