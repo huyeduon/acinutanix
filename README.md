@@ -1,3 +1,8 @@
+# Pre-requisite
+
+- vapic ova exists on Nutanix cluster
+- OOB subnet and Infra subnet
+
 # Install Python environment
 
 pip install -r requirements.txt
