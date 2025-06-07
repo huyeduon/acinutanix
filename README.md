@@ -1,7 +1,13 @@
+# Introduction
+
+The script helps to deploy Virtual APIC on Nutanix Cluster
+
 # Prerequisite
 
-- vapic ova exists on Nutanix cluster
+- Cisco Virtual APIC ova exists on Nutanix cluster
 - OOB subnet and Infra subnet
+- Nutanix Prism Central 2024.6.0.5 or above
+- Nutanix AOS 6.10 or above
 
 # Supported VM profile
 
