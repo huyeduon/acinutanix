@@ -20,7 +20,9 @@ For vAPIC-Large profile, please use Prism Central UI to deploy.
 
 # Install Python environment
 
+```python
 pip install -r requirements.txt
+```
 
 # Prepare .env file
 
