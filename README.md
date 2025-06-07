@@ -32,4 +32,7 @@ Setup .env file with below format
 # How to run the script
 
 - For example, create a vpic name "vapic-test1" with profile small
-- python create_vapic.py --name vapic-test1 --size small
+
+```python
+python create_vapic.py --name vapic-test1 --size small
+```
