@@ -14,3 +14,8 @@ Setup .env file with below format
 - cluster_name=nutanix_cluster_name
 - vapic_oob_subnet=oob_subet_name
 - vapic_infra_subnet=infra_subnet_name
+
+# How to run the script
+
+For example, create a vpic name "vapic-test1" with profile small
+python create_vapic.py --name vapic-test1 --size small
