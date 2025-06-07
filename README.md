@@ -26,9 +26,9 @@ pip install -r requirements.txt
 
 # Prepare .env file
 
-Setup .env file with below format
+Create a .env file in the same folder with create_vapic.py using below format:
 
-- baseUrl=https://10.68.39.237:9440/api/nutanix/v3/
+- baseUrl=https://ip_address_of_prism_central:9440/api/nutanix/v3/
 - username=prism_central_admin
 - password=prism_central_password
 - pc=prism_central_IP_address
