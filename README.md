@@ -1,6 +1,6 @@
 # Introduction
 
-The script helps to deploy Virtual APIC on Nutanix Cluster
+The script helps to deploy Cisco Virtual APIC on Nutanix Cluster using rest API.
 
 # Prerequisite
 
