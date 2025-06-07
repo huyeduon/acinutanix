@@ -1,7 +1,16 @@
-# Pre-requisite
+# Prerequisite
 
 - vapic ova exists on Nutanix cluster
 - OOB subnet and Infra subnet
+
+# Supported VM profile
+
+The script supports 2 VM profile
+
+- vAPIC-Small: 8 vCPU, 32GB Memory
+- vAPIC-Medium: 16 vCPU, 96GB Memory
+
+For vAPIC-Large profile, please use Prism Central UI to deploy.
 
 # Install Python environment
 
