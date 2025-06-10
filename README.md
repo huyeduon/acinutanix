@@ -11,7 +11,7 @@ The script helps to deploy Cisco Virtual APIC on Nutanix Cluster using rest API.
 
 # Supported VM profile
 
-The script supports 2 VM profile
+The script supports 2 VM profiles
 
 - vAPIC-Small: 8 vCPU, 32GB Memory
 - vAPIC-Medium: 16 vCPU, 96GB Memory
